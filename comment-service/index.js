@@ -1,15 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {randomBytes} = require('crypto');
+const cors = require('cors');
 
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 const commentsByPostId = {};
 
 app.get('/health',(req,res)=>{
-    res.status(200).send('running...')
+    res.send(
+        {
+            version:"1.0.0",
+            name:'comment service',
+            status:'running'
+        }
+    );
 });
 
 app.get('/posts/:id/comments',(req,res)=>{

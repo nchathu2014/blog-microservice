@@ -1,14 +1,19 @@
 const express = require("express");
 const {randomBytes} = require('crypto');
 const bodyParser = require('body-parser');
+const cors = require('cors')
   
 
-const app = express()
-app.use(bodyParser.json())
+const app = express();
+app.use(bodyParser.json());
+app.use(cors())
 let posts = {};
 
 app.get('/health',(req,res)=>{
-    res.send('Running...!');
+    res.send({
+        version:"1.0.0",
+        status:'running'
+    });
 })
 
 app.get('/posts',(req,res)=>{
