@@ -13,7 +13,7 @@ useEffect(()=>{
 },[]);
 
 const fetchPosts = async () => {
-    await axios.get('http://localhost:4000/posts')
+    await axios.get('http://localhost:4002/posts')
     .then(function (response) {
       // handle success
       console.log(response);
@@ -29,7 +29,7 @@ const renderedPosts = Object.values(posts).map(post=>{
     return (
         <div key={post.id} style={{border:'1px solid black',margin:5}}>
             <h3>{post.title}</h3>
-            <CommentList postId={post.id}/>
+            <CommentList comments={post.comments}/>
             <PostComment postId={post.id}/>
         </div>
     )

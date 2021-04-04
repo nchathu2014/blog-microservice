@@ -30,7 +30,7 @@ export default ({postId}) => {
             value={content}
             onChange={e=>setContent(e.target.value)}
             />
-            <button>Submit</button>
+            <button>Submit1</button>
             </form>
         </div>
     )
