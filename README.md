@@ -1,3 +1,4 @@
 # Blog using Microservice Architecture
-## React - Client
-## NodeJS - Server
+## Client - ReactJS
+## Server - Node, Express
+## Services: comment-service, post-service, comment-moderation-service, query-service, event-bus 
