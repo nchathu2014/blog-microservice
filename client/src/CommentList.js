@@ -20,8 +20,13 @@ export default ({comments}) => {
   
 
     const renderComments = comments.map((comment)=>{
+        let content;
+        if(comment.status === 'approved') content = comment.content;
+        if(comment.status === 'rejected') content = "Comment rejected :(";
+        if(comment.status === 'pending') content = "Comment is waiting for approval";
+
       return(
-         <li key={comment.id}>{comment.content}-{comment.status === 'pending'?'Waiting for approval':''}</li>
+         <li key={comment.id}>{content}</li>
       );
     })
 
