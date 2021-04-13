@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: posts
+spec:
+  containers:
+    - name: posts
+      image: nchathu2014/blog-post-service:0.0.1
+      imagePullPolicy: Never
