@@ -5,5 +5,5 @@ metadata:
 spec:
   containers:
     - name: posts
-      image: nchathu2014/blog-post-service:0.0.1
+      image: nchathu2014/blog-clpost-service:0.0.1
       imagePullPolicy: Never

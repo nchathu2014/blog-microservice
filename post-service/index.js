@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 app.use(cors())
 let posts = {};
 
+const URL = `http://eventbus-cluster-srv:4005/events`;
+
 app.get('/health',(req,res)=>{
     res.send({
         "version": "1.0.0",
@@ -31,7 +33,7 @@ app.post('/posts',async (req,res)=>{
     }
 
     // Call to Event-Bus service
-    await axios.post('http://localhost:4005/events',{
+    await axios.post(URL,{
         type:'PostCreated',
         data:{
             id,title
@@ -48,6 +50,7 @@ app.post('/events',(req,res)=>{
 });
 
 app.listen(4000,()=>{
+    console.log('v0.0.6');
     console.log("Post Servive Running on Port 4000")
 })
 
