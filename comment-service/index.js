@@ -11,6 +11,8 @@ app.use(cors());
 
 const commentsByPostId = {};
 
+const EVENT_BUS_URL = `http://eventbus-cluster-srv:4005/events`;
+
 app.get('/health',(req,res)=>{
     res.send(
         {
@@ -38,7 +40,7 @@ app.post('/posts/:id/comments',async (req,res)=>{
     commentsByPostId[postId]=comments;
 
     //Call to Event-Bus service
-    await axios.post('http://localhost:4005/events',{
+    await axios.post(EVENT_BUS_URL,{
         type:'CommentCreated',
         data:{
             id: commentId,
@@ -62,7 +64,7 @@ app.post('/events',async (req,res)=>{
        const comment = comments.find(item=>item.id === id)
        comment.status = status;
 
-       await axios.post('http://localhost:4005/events',{
+       await axios.post(EVENT_BUS_URL,{
             type:"CommentUpdated",
             data:{
                 id, postId, status,content
@@ -75,6 +77,7 @@ app.post('/events',async (req,res)=>{
 
 
 app.listen(4001,()=>{
+    console.log('v0.0.6')
     console.log("Comment Servive Running on Port 4001")
 })
 

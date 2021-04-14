@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(bodyParser.json());
+const EVENT_BUS_URL = `http://eventbus-cluster-srv:4005/events`;
 
 app.get('/health',(req,res)=>{
     res.send({
@@ -19,7 +20,7 @@ app.post('/events',async (req,res)=>{
     const {type,data} = req.body;
     if(type==='CommentCreated'){
         const status = data.content.includes('orange')?'rejected':'approved';
-        await axios.post('http://localhost:4005/events',{
+        await axios.post(EVENT_BUS_URL,{
         type:'CommentModerated',
         data:{
             id:data.id,

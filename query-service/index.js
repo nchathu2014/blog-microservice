@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 let posts = {};
+const EVENT_BUS_URL = `http://eventbus-cluster-srv:4005/events`;
 
 const handleEvent = (type, data) => {
   if(type==='PostCreated'){
@@ -58,7 +59,7 @@ app.post('/events',(req,res)=>{
 
 app.listen(4002,async ()=>{
     console.log("Query Servive Running on Port 4002");
-    const response = await axios.get('http://localhost:4005/events');
+    const response = await axios.get(EVENT_BUS_URL);
     console.log(response.data)
     for(let event of response.data){
       console.log(`Proccessing event: ${event.type}`);

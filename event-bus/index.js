@@ -8,6 +8,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const URL_POST_SERVICE=`http://posts-clutser-srv:4000/events`;
+const URL_COMMENT_SERVICE=`http://posts-clutser-srv:4001/events`;
+const URL_QUERY_SERVICE=`http://posts-clutser-srv:4002/events`;
+const URL_MODERATE_SERVICE=`http://posts-clutser-srv:4003/events`;
 
 const events = [];
 
@@ -32,9 +35,9 @@ app.post('/events',(req,res)=>{
     events.push(event);
 
     axios.post(URL_POST_SERVICE,event).catch(err=>console.log(err.message));
-    axios.post('http://localhost:4001/events',event).catch(err=>console.log(err.message));;
-    axios.post('http://localhost:4002/events',event).catch(err=>console.log(err.message));;
-    axios.post('http://localhost:4003/events',event).catch(err=>console.log(err.message));;
+    axios.post(URL_COMMENT_SERVICE,event).catch(err=>console.log(err.message));;
+    axios.post(URL_QUERY_SERVICE,event).catch(err=>console.log(err.message));;
+    axios.post(URL_MODERATE_SERVICE,event).catch(err=>console.log(err.message));;
 
     res.send({status:'OK'});
 });
