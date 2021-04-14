@@ -8,9 +8,9 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const URL_POST_SERVICE=`http://posts-clutser-srv:4000/events`;
-const URL_COMMENT_SERVICE=`http://posts-clutser-srv:4001/events`;
-const URL_QUERY_SERVICE=`http://posts-clutser-srv:4002/events`;
-const URL_MODERATE_SERVICE=`http://posts-clutser-srv:4003/events`;
+const URL_COMMENT_SERVICE=`http://comments-clutser-srv:4001/events`;
+const URL_QUERY_SERVICE=`http://query-clutser-srv:4002/events`;
+const URL_MODERATE_SERVICE=`http://moderate-clutser-srv:4003/events`;
 
 const events = [];
 

@@ -13,7 +13,7 @@ useEffect(()=>{
 },[]);
 
 const fetchPosts = async () => {
-    await axios.get('http://localhost:4002/posts')
+    await axios.get('http://posts.com/posts')
     .then(function (response) {
       // handle success
       console.log(response);
